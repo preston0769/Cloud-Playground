@@ -1,0 +1,1 @@
+this is a hands on practice on azure aks

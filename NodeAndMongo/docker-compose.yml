@@ -1,0 +1,19 @@
+version: "2"
+services:
+  app:
+    container_name: app 
+    restart: always
+    image: preston0769/auth-app:0.0.1
+    ports:
+      - "8080:8080"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"
+volumes:
+  mongodata:

@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+
+  web:
+    container_name: 'dotnetcorepostgres'
+    image: 'dotnetcorepostgres'
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile 
+    # volumes:
+    #   - .:/app
+    ports:
+     - "9229:80"
+    depends_on:
+     - "postgres"
+    networks:
+      - dotnetcorepostgress-network
+
+  postgres:
+    container_name: 'postgres'
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: password
+    networks:
+      - dotnetcorepostgress-network
+
+networks:
+  dotnetcorepostgress-network:
+    driver: bridge
